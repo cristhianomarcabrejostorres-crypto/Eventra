@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EVENTRA: descubre conciertos, festivales y teatro en Lima. Inscríbete en segundos y gestiona tus eventos en un solo lugar.">
+    <title>Eventra | Conciertos en Lima</title>
+    <link rel="icon" href="LogoEventra.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#eventos" class="saltar-contenido">Saltar a eventos</a>
+
+    <header>
+        <div class="header-top">
+            <a href="#inicio" class="logo" aria-label="Eventra">
+                <span class="logo-event">Event</span><span class="logo-ra">ra</span>
+            </a>
+            <button type="button" class="menu-btn" id="botonMenu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuPrincipal">☰</button>
+            <nav id="menuPrincipal">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#sobre">Sobre Nosotros</a></li>
+                    <li><a href="#contactanos">Contáctanos</a></li>
+                    <li><a href="#iniciar-sesion" id="enlaceLogin">Iniciar sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <form class="buscador" role="search">
+            <label for="campoBuscar" class="sr-only">Buscar conciertos</label>
+            <input type="text" id="campoBuscar" name="buscar" placeholder="Buscar conciertos...">
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+<main>
+
+    <section id="inicio" class="seccion-inicio">
+        <div class="carrusel" aria-label="Eventos destacados">
+            <div class="carrusel-pista" id="carruselPista"></div>
+            <div class="carrusel-puntos" id="carruselPuntos"></div>
+        </div>
+
+        <div class="hero-contenido">
+            <p class="hero-etiqueta">Conciertos en Lima</p>
+            <h1>Bienvenido a <span class="hero-marca">EVENTRA</span></h1>
+            <p class="hero-descripcion">El mejor lugar para descubrir y disfrutar de los mejores conciertos de tus artistas favoritos.</p>
+            <div class="hero-acciones">
+                <a href="#eventos" class="boton-principal">Ver eventos</a>
+                <a href="#sobre" class="boton-secundario">Conocer EVENTRA</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="iniciar-sesion" class="pantalla-login" hidden>
+        <div class="tarjeta-login">
+            <div class="login-cabecera">
+                <span class="login-logo">Event<span>ra</span></span>
+                <h2>Iniciar sesión</h2>
+            </div>
+            <p class="login-texto">Ingresa tus datos para inscribirte en los conciertos.</p>
+
+            <form id="formInicioSesion">
+                <div class="campo-login">
+                    <label for="nombreLogin">Nombre</label>
+                    <input type="text" id="nombreLogin" name="nombre" placeholder="Tu nombre" minlength="2" maxlength="80" required>
+                </div>
+
+                <div class="campo-login">
+                    <label for="correoLogin">Correo</label>
+                    <input type="email" id="correoLogin" name="correo" placeholder="correo@ejemplo.com" required>
+                </div>
+
+                <div class="campo-login">
+                    <label for="contrasenaLogin">Contraseña</label>
+                    <input type="password" id="contrasenaLogin" name="contrasena" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                </div>
+
+                <button type="submit" class="btn-login">Entrar</button>
+                <button type="button" id="cerrarLogin" class="boton-volver-login">Cancelar</button>
+
+                <p id="mensajeLogin" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="eventos" class="seccion-eventos">
+        <div class="seccion-cabecera">
+            <div>
+                <h2>Descubre próximos conciertos</h2>
+                <p>Encuentra tu próxima experiencia con EVENTRA. Filtra por artista o busca por nombre.</p>
+            </div>
+        </div>
+
+        <div class="filtros">
+            <label for="filtroArtista" class="filtro-etiqueta">Artista</label>
+            <select id="filtroArtista" aria-label="Filtrar por artista">
+                <option value="todos">Todos los artistas</option>
+                <option value="Michael Jackson">Michael Jackson</option>
+                <option value="Trueno">Trueno</option>
+                <option value="Saramalacara">Saramalacara</option>
+                <option value="Justin Bieber">Justin Bieber</option>
+                <option value="Rojuu">Rojuu</option>
+            </select>
+        </div>
+
+        <p id="mensajeEventos" class="mensaje-vacio" role="status" aria-live="polite"></p>
+        <div id="listaEventos" class="lista-eventos"></div>
+    </section>
+
+    <section id="mis-eventos" class="seccion-eventos">
+        <div class="seccion-cabecera">
+            <div>
+                <h2>Mis conciertos</h2>
+                <p>Aquí aparecen las entradas que compraste.</p>
+            </div>
+        </div>
+        <p id="mensajeInscripciones" class="mensaje-vacio" role="status" aria-live="polite"></p>
+        <div id="listaInscripciones" class="lista-eventos"></div>
+    </section>
+
+    <section id="sobre" class="seccion-sobre">
+        <div class="seccion-cabecera">
+            <div>
+                <h2>Sobre Nosotros</h2>
+                <p>EVENTRA conecta a las personas con las mejores experiencias culturales de Lima.</p>
+            </div>
+        </div>
+        <ul class="lista-puntos-sobre">
+            <li>
+                <h3>Descubre</h3>
+                <p>Encuentra conciertos en un solo lugar.</p>
+            </li>
+            <li>
+                <h3>Inscribete</h3>
+                <p>Compra tu entrada en segundos con una cuenta sencilla.</p>
+            </li>
+            <li>
+                <h3>Gestiona</h3>
+                <p>Revisa y cancela tus compras cuando lo necesites.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="contactanos" class="seccion-contacto">
+        <div class="seccion-cabecera">
+            <div>
+                <h2>Contáctanos</h2>
+                <p>¿Tienes dudas o sugerencias? Escríbenos.</p>
+            </div>
+        </div>
+        <div class="contacto-grid">
+            <form id="formContacto" class="formulario-contacto">
+                <div class="campo">
+                    <label for="nombreContacto">Nombre</label>
+                    <input type="text" id="nombreContacto" name="nombre" required>
+                </div>
+                <div class="campo">
+                    <label for="correoContacto">Correo</label>
+                    <input type="email" id="correoContacto" name="correo" required>
+                </div>
+                <div class="campo">
+                    <label for="mensajeContacto">Mensaje</label>
+                    <textarea id="mensajeContacto" name="mensaje" rows="4" required></textarea>
+                </div>
+                <button type="submit">Enviar mensaje</button>
+            </form>
+
+            <aside class="contacto-datos">
+                <h3>También puedes escribirnos a</h3>
+                <ul class="footer-lista-contacto">
+                    <li><a href="mailto:hola@eventra.com">hola@eventra.com</a></li>
+                    <li>Lima, Perú</li>
+                    <li>Lun – Vie, 9:00 – 18:00</li>
+                </ul>
+            </aside>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="footer-contenedor">
+        <div class="footer-marca">
+            <a href="#inicio" class="logo footer-logo" aria-label="Eventra">
+                <span class="logo-event">Event</span><span class="logo-ra">ra</span>
+            </a>
+            <p class="footer-eslogan">
+                Tu plataforma para descubrir conciertos, inscribirte al instante y
+                llevar tu agenda en un solo lugar.
+            </p>
+        </div>
+
+        <div class="footer-contacto">
+            <h3 class="footer-titulo">Contacto</h3>
+            <ul class="footer-lista-contacto">
+                <li>
+                    <a href="mailto:hola@eventra.com">hola@eventra.com</a>
+                </li>
+                <li>Lima, Perú</li>
+                <li>Lun – Vie, 9:00 – 18:00</li>
+            </ul>
+            <div class="footer-redes">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Eventra">Instagram</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Eventra">Facebook</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-barra">
+        <p>Eventra</p>
+    </div>
+</footer>
+
+<div id="avisoExito" class="aviso-exito" role="alert" aria-live="assertive" hidden></div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
